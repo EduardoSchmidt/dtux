@@ -1,0 +1,27 @@
+.refine-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  &__field {
+    flex: 1 1 320px;
+    min-width: 260px;
+  }
+
+  &__button {
+    flex: 0 0 auto;
+  }
+}
+
+.results-error {
+  color: var(--color-feedback-negative-base, #dc3545);
+  margin: 1rem 0;
+}
+
+.results-empty {
+  color: var(--color-neutral-mid-40, #6d7278);
+  text-align: center;
+  padding: 1rem 0;
+}

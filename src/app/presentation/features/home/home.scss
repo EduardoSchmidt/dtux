@@ -1,0 +1,32 @@
+.home-intro {
+  color: var(--color-neutral-mid-40, #6d7278);
+  margin-bottom: 1.5rem;
+}
+
+.search-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+
+  &__field {
+    flex: 1 1 360px;
+    min-width: 280px;
+  }
+
+  &__button {
+    flex: 0 0 auto;
+  }
+}
+
+.home-error {
+  color: var(--color-feedback-negative-base, #dc3545);
+  margin-bottom: 1rem;
+}
+
+.home-empty {
+  color: var(--color-neutral-mid-40, #6d7278);
+  text-align: center;
+  padding: 1rem 0;
+}

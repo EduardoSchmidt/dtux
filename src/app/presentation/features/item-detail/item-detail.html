@@ -1,0 +1,24 @@
+<po-page-default
+  [p-title]="item() ? 'Item ' + item()!.code : 'Detalhe do item'"
+  [p-breadcrumb]="breadcrumbControl.getBreadcrumb()"
+>
+  @if (loading()) {
+    <p class="detail-loading">Carregando...</p>
+  } @else if (notFound()) {
+    <p class="detail-not-found">Item não encontrado.</p>
+    <po-button p-label="Voltar para a busca" p-kind="primary" (click)="goBack()"> </po-button>
+  } @else {
+    <div class="detail-grid">
+      <po-info p-label="Código" [p-value]="item()!.code"></po-info>
+      <po-info p-label="Nome" [p-value]="item()!.name"></po-info>
+      <po-info p-label="Categoria" [p-value]="item()!.category"></po-info>
+      <po-info p-label="Responsável" [p-value]="item()!.responsible"></po-info>
+      <po-info p-label="Situação" [p-value]="item()!.status"></po-info>
+      <po-info p-label="Referência interna" [p-value]="internalReference()"></po-info>
+      <po-info p-label="Criado em" [p-value]="createdAtIso() | dtsDateFormat: 'dd/MM/yyyy'"></po-info>
+      <po-info p-label="Atualizado em" [p-value]="updatedAtIso() | dtsDateFormat: 'dd/MM/yyyy'"></po-info>
+    </div>
+
+    <po-button class="detail-back" p-label="Voltar para a busca" p-kind="secondary" (click)="goBack()"> </po-button>
+  }
+</po-page-default>

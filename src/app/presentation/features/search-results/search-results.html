@@ -1,0 +1,43 @@
+<po-page-default p-title="Resultados da busca" [p-breadcrumb]="breadcrumbControl.getBreadcrumb()">
+  <div class="refine-row">
+    <po-input
+      class="refine-row__field"
+      name="refineTerm"
+      p-label="Refinar busca"
+      p-icon="an an-magnifying-glass"
+      [ngModel]="refineTerm()"
+      (ngModelChange)="refineTerm.set($event)"
+      (keyup.enter)="onRefineSearch()"
+    >
+    </po-input>
+
+    <po-button class="refine-row__button" p-label="Buscar" p-kind="primary" (click)="onRefineSearch()"> </po-button>
+
+    <po-button
+      class="refine-row__button"
+      p-label="Exportar CSV"
+      p-kind="secondary"
+      p-icon="an an-download-simple"
+      [p-disabled]="!hasResults()"
+      (click)="exportCsv()"
+    >
+    </po-button>
+  </div>
+
+  <po-disclaimer-group
+    p-title="Filtros aplicados"
+    [p-disclaimers]="disclaimers()"
+    (p-remove)="onDisclaimerRemoved()"
+  >
+  </po-disclaimer-group>
+
+  @if (errorMessage()) {
+    <p class="results-error">{{ errorMessage() }}</p>
+  }
+
+  <po-table [p-columns]="columns" [p-items]="results()" [p-loading]="loading()" [p-height]="420"> </po-table>
+
+  @if (isEmptyResult()) {
+    <p class="results-empty">Nenhum resultado encontrado para essa busca.</p>
+  }
+</po-page-default>

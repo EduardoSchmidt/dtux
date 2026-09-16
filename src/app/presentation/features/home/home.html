@@ -1,0 +1,44 @@
+<po-page-default
+  p-title="Portal Backoffice"
+  p-subtitle="Utilitários e componentes PO-UI + dts-backoffice-util"
+  [p-breadcrumb]="breadcrumbControl.getBreadcrumb()"
+>
+  <p class="home-intro">
+    Pesquise por código, nome, categoria ou responsável. Ao buscar, a aplicação abre a tela de resultados.
+  </p>
+
+  <div class="search-row">
+    <po-input
+      class="search-row__field"
+      name="searchTerm"
+      p-label="Buscar no backoffice"
+      p-placeholder="Ex.: financeiro, BO-1004, Ana Lima..."
+      p-icon="an an-magnifying-glass"
+      [ngModel]="searchTerm()"
+      (ngModelChange)="searchTerm.set($event)"
+      (keyup.enter)="onSearch()"
+    >
+    </po-input>
+
+    <po-button
+      class="search-row__button"
+      p-label="Buscar"
+      p-icon="an an-magnifying-glass"
+      p-kind="primary"
+      (click)="onSearch()"
+    >
+    </po-button>
+  </div>
+
+  @if (errorMessage()) {
+    <p class="home-error">{{ errorMessage() }}</p>
+  }
+
+  <po-divider p-label="Acesso rápido"></po-divider>
+
+  <po-table [p-columns]="columns" [p-items]="quickAccessItems()" [p-loading]="loading()" [p-height]="320"> </po-table>
+
+  @if (!loading() && !hasQuickAccessItems()) {
+    <p class="home-empty">Nenhum item cadastrado.</p>
+  }
+</po-page-default>
