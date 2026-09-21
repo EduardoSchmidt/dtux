@@ -1,18 +1,18 @@
 <po-page-default
   p-title="Portal Backoffice"
-  p-subtitle="Utilitários e componentes PO-UI + dts-backoffice-util"
+  p-subtitle="Consulta de cliente por ID (API real com Basic Auth)"
   [p-breadcrumb]="breadcrumbControl.getBreadcrumb()"
 >
   <p class="home-intro">
-    Pesquise por código, nome, categoria ou responsável. Ao buscar, a aplicação abre a tela de resultados.
+    Digite o ID do cliente e pesquise. A aplicação chama a API real e abre a tela de resultados.
   </p>
 
   <div class="search-row">
     <po-input
       class="search-row__field"
       name="searchTerm"
-      p-label="Buscar no backoffice"
-      p-placeholder="Ex.: financeiro, BO-1004, Ana Lima..."
+      p-label="Buscar cliente por ID"
+      p-placeholder="Ex.: 1001"
       p-icon="an an-magnifying-glass"
       [ngModel]="searchTerm()"
       (ngModelChange)="searchTerm.set($event)"
@@ -29,16 +29,4 @@
     >
     </po-button>
   </div>
-
-  @if (errorMessage()) {
-    <p class="home-error">{{ errorMessage() }}</p>
-  }
-
-  <po-divider p-label="Acesso rápido"></po-divider>
-
-  <po-table [p-columns]="columns" [p-items]="quickAccessItems()" [p-loading]="loading()" [p-height]="320"> </po-table>
-
-  @if (!loading() && !hasQuickAccessItems()) {
-    <p class="home-empty">Nenhum item cadastrado.</p>
-  }
 </po-page-default>
